@@ -1,0 +1,26 @@
+<section class="section" id="why">
+  <div class="container split-layout">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Why Choose Us</p>
+      <h2>A composed, professional partner for meaningful celebrations.</h2>
+    </div>
+    <div class="reason-grid">
+      @for (reason of reasons; track reason.title) {
+        <article class="reason-card reveal glass-card">
+          <div class="icon-shell small">
+            @switch (reason.icon) {
+              @case ('badge') { <svg lucideBadgeCheck size="21"></svg> }
+              @case ('flower') { <svg lucideFlower2 size="21"></svg> }
+              @case ('clock') { <svg lucideClock size="21"></svg> }
+              @case ('shield') { <svg lucideShieldCheck size="21"></svg> }
+            }
+          </div>
+          <div>
+            <h3>{{ reason.title }}</h3>
+            <p>{{ reason.text }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

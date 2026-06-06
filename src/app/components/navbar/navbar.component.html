@@ -1,0 +1,32 @@
+<header class="site-header">
+  <nav class="navbar container" aria-label="Primary navigation">
+    <a class="brand-mark" href="#home" (click)="closeMenu()" aria-label="Eventrra by Peththa home">
+      <span class="brand-symbol">E</span>
+      <span>
+        <strong>{{ brand }}</strong>
+        <small>Luxury event styling</small>
+      </span>
+    </a>
+
+    <button class="icon-button menu-toggle" type="button" (click)="toggleMenu()" aria-label="Toggle menu">
+      @if (isOpen()) {
+        <svg lucideX size="22"></svg>
+      } @else {
+        <svg lucideMenu size="22"></svg>
+      }
+    </button>
+
+    <div class="nav-links" [class.is-open]="isOpen()">
+      @for (item of navItems; track item.href) {
+        <a
+          [href]="item.href"
+          [class.active]="activeSection() === item.href.replace('#', '')"
+          (click)="closeMenu()"
+        >
+          {{ item.label }}
+        </a>
+      }
+      <a class="nav-cta" [href]="whatsappUrl" target="_blank" rel="noopener" (click)="closeMenu()">Book Now</a>
+    </div>
+  </nav>
+</header>

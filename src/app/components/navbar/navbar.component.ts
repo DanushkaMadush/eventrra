@@ -1,7 +1,7 @@
 import { Component, input, output, signal } from '@angular/core';
 import { LucideMenu, LucideX } from '@lucide/angular';
 import type { AppSection } from '../../app';
-import { contactData, whatsappUrl } from '../../data/contact.data';
+import { whatsappUrl } from '../../data/contact.data';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,6 @@ export class NavbarComponent {
   readonly activeSection = input.required<AppSection>();
   readonly sectionSelected = output<AppSection>();
   readonly whatsappUrl = whatsappUrl;
-  readonly brand = contactData.businessName;
 
   readonly navItems: { label: string; section: AppSection }[] = [
     { label: 'Home', section: 'home' },

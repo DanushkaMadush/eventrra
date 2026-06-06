@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, HostListener, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { LucideMenu, LucideX } from '@lucide/angular';
+import type { AppSection } from '../../app';
 import { contactData, whatsappUrl } from '../../data/contact.data';
 
 @Component({
@@ -7,38 +8,31 @@ import { contactData, whatsappUrl } from '../../data/contact.data';
   imports: [LucideMenu, LucideX],
   templateUrl: './navbar.component.html',
 })
-export class NavbarComponent implements AfterViewInit {
+export class NavbarComponent {
   readonly isOpen = signal(false);
-  readonly activeSection = signal('home');
+  readonly activeSection = input.required<AppSection>();
+  readonly sectionSelected = output<AppSection>();
   readonly whatsappUrl = whatsappUrl;
   readonly brand = contactData.businessName;
 
-  readonly navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Process', href: '#process' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Contact', href: '#contact' },
+  readonly navItems: { label: string; section: AppSection }[] = [
+    { label: 'Home', section: 'home' },
+    { label: 'About', section: 'about' },
+    { label: 'Services', section: 'services' },
+    { label: 'Gallery', section: 'gallery' },
+    { label: 'Why Choose Us', section: 'why' },
+    { label: 'How It Works', section: 'process' },
+    { label: 'Testimonials', section: 'testimonials' },
+    { label: 'Contact', section: 'contact' },
   ];
-
-  ngAfterViewInit(): void {
-    this.updateActiveSection();
-  }
-
-  @HostListener('window:scroll')
-  updateActiveSection(): void {
-    const sectionIds = ['home', ...this.navItems.map((item) => item.href.replace('#', ''))];
-    const current = sectionIds
-      .map((id) => ({ id, top: document.getElementById(id)?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY }))
-      .filter((section) => section.top <= 140)
-      .at(-1);
-
-    this.activeSection.set(current?.id ?? 'home');
-  }
 
   toggleMenu(): void {
     this.isOpen.update((value) => !value);
+  }
+
+  selectSection(section: AppSection): void {
+    this.sectionSelected.emit(section);
+    this.closeMenu();
   }
 
   closeMenu(): void {

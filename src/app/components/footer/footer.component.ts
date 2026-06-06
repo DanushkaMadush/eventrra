@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
+import type { AppSection } from '../../app';
 import { contactData } from '../../data/contact.data';
 
 @Component({
@@ -6,6 +7,7 @@ import { contactData } from '../../data/contact.data';
   templateUrl: './footer.component.html',
 })
 export class FooterComponent {
+  readonly sectionSelected = output<AppSection>();
   readonly contact = contactData;
   readonly year = new Date().getFullYear();
 }

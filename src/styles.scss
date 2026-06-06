@@ -61,6 +61,10 @@ textarea {
   font: inherit;
 }
 
+button {
+  color: inherit;
+}
+
 h1,
 h2,
 h3,
@@ -100,6 +104,16 @@ h3 {
 .section {
   position: relative;
   padding: 104px 0;
+}
+
+.page-content {
+  min-height: calc(100dvh - 186px);
+  padding-top: 78px;
+}
+
+.view-transition {
+  min-height: inherit;
+  animation: pageFadeIn 0.62s ease-in-out both;
 }
 
 .section-band {
@@ -151,6 +165,7 @@ h3 {
   border-radius: 999px;
   padding: 0 22px;
   border: 1px solid var(--line);
+  cursor: pointer;
   font-weight: 700;
   transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, color 0.35s ease;
 }
@@ -198,6 +213,14 @@ h3 {
   gap: 12px;
 }
 
+.brand-button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
 .brand-symbol {
   display: grid;
   width: 42px;
@@ -231,21 +254,27 @@ h3 {
   gap: 6px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links button {
   border-radius: 999px;
   padding: 10px 13px;
+  border: 0;
+  background: transparent;
   color: var(--muted);
+  cursor: pointer;
   font-size: 14px;
   font-weight: 650;
   transition: color 0.3s ease, background 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links button:hover {
   color: var(--text);
   background: rgba(255, 255, 255, 0.07);
 }
 
-.nav-links a.active {
+.nav-links a.active,
+.nav-links button.active {
   color: var(--gold);
   background: rgba(216, 183, 107, 0.1);
 }
@@ -263,7 +292,7 @@ h3 {
 
 .hero {
   min-height: 760px;
-  padding-top: 170px;
+  padding-top: 92px;
   overflow: hidden;
 }
 
@@ -784,9 +813,22 @@ small {
 }
 
 .footer-links a,
+.footer-links button,
 .site-footer p {
   color: var(--soft);
   font-size: 14px;
+}
+
+.footer-links button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-links button:hover {
+  color: var(--gold);
 }
 
 .site-footer p {
@@ -830,6 +872,18 @@ small {
   from {
     opacity: 0;
     transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
 
   to {
@@ -952,6 +1006,11 @@ small {
     padding: 12px 14px;
   }
 
+  .nav-links button {
+    padding: 12px 14px;
+    text-align: left;
+  }
+
   .nav-links .nav-cta {
     margin-left: 0;
     text-align: center;
@@ -959,7 +1018,7 @@ small {
 
   .hero {
     min-height: auto;
-    padding-top: 128px;
+    padding-top: 76px;
   }
 
   .hero-grid {

@@ -4,14 +4,14 @@ export interface SocialLink {
   shortLabel: string;
 }
 
-export const whatsappNumber = '+94 77 123 4567';
+export const whatsappNumber = '+94775658394';
 export const whatsappMessage = 'Hi Eventrra by Peththa, I would like to book an event decoration service.';
 
 export const contactData = {
   businessName: 'Eventrra by Peththa',
   slogan: 'Exclusive Events, Priceless Memories',
   whatsapp: whatsappNumber,
-  phone: '+94 77 123 4567',
+  phone: '+94775658394',
   email: 'hello@eventrra.com',
   location: 'Colombo, Sri Lanka',
   socialLinks: [

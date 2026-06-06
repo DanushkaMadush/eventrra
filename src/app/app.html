@@ -1,15 +1,49 @@
-<app-navbar />
+<app-navbar [activeSection]="selectedSection()" (sectionSelected)="selectSection($event)" />
 
-<main>
-  <app-hero />
-  <app-about />
-  <app-services />
-  <app-gallery />
-  <app-why-choose-us />
-  <app-process />
-  <app-testimonials />
-  <app-contact />
+<main class="page-content">
+  @switch (selectedSection()) {
+    @case ('home') {
+      <div class="view-transition">
+        <app-hero (sectionSelected)="selectSection($event)" />
+      </div>
+    }
+    @case ('about') {
+      <div class="view-transition">
+        <app-about />
+      </div>
+    }
+    @case ('services') {
+      <div class="view-transition">
+        <app-services />
+      </div>
+    }
+    @case ('gallery') {
+      <div class="view-transition">
+        <app-gallery />
+      </div>
+    }
+    @case ('why') {
+      <div class="view-transition">
+        <app-why-choose-us />
+      </div>
+    }
+    @case ('process') {
+      <div class="view-transition">
+        <app-process />
+      </div>
+    }
+    @case ('testimonials') {
+      <div class="view-transition">
+        <app-testimonials />
+      </div>
+    }
+    @case ('contact') {
+      <div class="view-transition">
+        <app-contact />
+      </div>
+    }
+  }
 </main>
 
-<app-footer />
+<app-footer (sectionSelected)="selectSection($event)" />
 <app-floating-book-button />

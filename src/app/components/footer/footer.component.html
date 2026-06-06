@@ -1,19 +1,19 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="brand-mark" href="#home" aria-label="Eventrra by Peththa home">
+      <button class="brand-mark brand-button" type="button" (click)="sectionSelected.emit('home')" aria-label="Eventrra by Peththa home">
         <span class="brand-symbol">E</span>
         <span>
           <strong>{{ contact.businessName }}</strong>
           <small>{{ contact.slogan }}</small>
         </span>
-      </a>
+      </button>
     </div>
 
     <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+      <button type="button" (click)="sectionSelected.emit('services')">Services</button>
+      <button type="button" (click)="sectionSelected.emit('gallery')">Gallery</button>
+      <button type="button" (click)="sectionSelected.emit('contact')">Contact</button>
     </div>
 
     <p>© {{ year }} {{ contact.businessName }}. All rights reserved.</p>

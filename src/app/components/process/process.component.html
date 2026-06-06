@@ -1,0 +1,18 @@
+<section class="section section-band" id="process">
+  <div class="container">
+    <div class="section-heading centered reveal">
+      <p class="eyebrow">How It Works</p>
+      <h2>A clear process from first message to final reveal.</h2>
+    </div>
+
+    <div class="process-list">
+      @for (step of steps; track step.title; let index = $index) {
+        <article class="process-card reveal">
+          <span>{{ index + 1 }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

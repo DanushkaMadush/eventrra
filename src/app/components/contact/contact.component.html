@@ -1,0 +1,95 @@
+<section class="section section-band contact-section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Tell us about the moment you want to create.</h2>
+      <p>
+        Share a few details and we will respond with next steps, availability, and styling direction.
+      </p>
+
+      <div class="contact-list">
+        <a [href]="whatsappUrl" target="_blank" rel="noopener">
+          <svg lucideMessageCircle size="19"></svg>
+          <span>WhatsApp {{ contact.whatsapp }}</span>
+        </a>
+        <a href="tel:+94771234567">
+          <svg lucidePhone size="19"></svg>
+          <span>{{ contact.phone }}</span>
+        </a>
+        <a href="mailto:hello@eventrra.com">
+          <svg lucideMail size="19"></svg>
+          <span>{{ contact.email }}</span>
+        </a>
+        <span>
+          <svg lucideMapPin size="19"></svg>
+          <span>{{ contact.location }}</span>
+        </span>
+      </div>
+
+      <div class="social-row" aria-label="Social links">
+        @for (social of contact.socialLinks; track social.label) {
+          <a [href]="social.url" target="_blank" rel="noopener" [attr.aria-label]="social.label">
+            {{ social.shortLabel }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <form class="contact-form glass-card reveal delay-1" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-row">
+        <label>
+          <span>Name</span>
+          <input type="text" formControlName="name" placeholder="Your name" autocomplete="name" />
+          @if (fieldInvalid('name')) { <small>Name is required.</small> }
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" formControlName="email" placeholder="you@example.com" autocomplete="email" />
+          @if (fieldInvalid('email')) { <small>Enter a valid email.</small> }
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          <span>Phone</span>
+          <input type="tel" formControlName="phone" placeholder="+94 77 123 4567" autocomplete="tel" />
+          @if (fieldInvalid('phone')) { <small>Phone number is required.</small> }
+        </label>
+        <label>
+          <span>Event Date</span>
+          <input type="date" formControlName="eventDate" />
+          @if (fieldInvalid('eventDate')) { <small>Select an event date.</small> }
+        </label>
+      </div>
+
+      <label>
+        <span>Event Type</span>
+        <select formControlName="eventType">
+          <option value="">Select an event type</option>
+          @for (eventType of eventTypes; track eventType) {
+            <option [value]="eventType">{{ eventType }}</option>
+          }
+        </select>
+        @if (fieldInvalid('eventType')) { <small>Select an event type.</small> }
+      </label>
+
+      <label>
+        <span>Message</span>
+        <textarea formControlName="message" rows="5" placeholder="Tell us about your event, location, guest count, and preferred style."></textarea>
+        @if (fieldInvalid('message')) { <small>Please add at least 12 characters.</small> }
+      </label>
+
+      <button class="button primary form-submit" type="submit" [disabled]="isSending()">
+        <svg lucideSend size="18"></svg>
+        {{ isSending() ? 'Sending...' : 'Send Inquiry' }}
+      </button>
+
+      @if (submitState() === 'success') {
+        <p class="form-state success">Thank you. Your inquiry has been sent successfully.</p>
+      }
+      @if (submitState() === 'error') {
+        <p class="form-state error">Something went wrong. Please try again or message us on WhatsApp.</p>
+      }
+    </form>
+  </div>
+</section>

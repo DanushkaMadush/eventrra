@@ -1,0 +1,33 @@
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-heading centered reveal">
+      <p class="eyebrow">Services</p>
+      <h2>Designed for celebrations with presence.</h2>
+      <p>Choose a signature service or ask us to build a custom styling concept from scratch.</p>
+    </div>
+
+    <div class="card-grid services-grid">
+      @for (service of services; track service.title) {
+        <article class="service-card glass-card reveal">
+          <div class="icon-shell">
+            @switch (service.icon) {
+              @case ('cake') { <svg lucideCake size="24"></svg> }
+              @case ('heart') { <svg lucideHeart size="24"></svg> }
+              @case ('sparkles') { <svg lucideSparkles size="24"></svg> }
+              @case ('crown') { <svg lucideCrown size="24"></svg> }
+              @case ('rings') { <svg lucideVenetianMask size="24"></svg> }
+              @case ('palette') { <svg lucidePalette size="24"></svg> }
+            }
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <ul>
+            @for (highlight of service.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

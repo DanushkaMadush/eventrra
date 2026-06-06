@@ -1,0 +1,32 @@
+<header class="site-header">
+  <nav class="navbar container" aria-label="Primary navigation">
+    <button class="navbar-brand" type="button" (click)="selectSection('home')" aria-label="Eventrra by Peththa home">
+      <img
+        src="assets/logo/logo.jpeg"
+        alt="Eventrra by Peththa Logo"
+        class="company-logo"
+      />
+    </button>
+
+    <button class="icon-button menu-toggle" type="button" (click)="toggleMenu()" aria-label="Toggle menu">
+      @if (isOpen()) {
+        <svg lucideX size="22"></svg>
+      } @else {
+        <svg lucideMenu size="22"></svg>
+      }
+    </button>
+
+    <div class="nav-links" [class.is-open]="isOpen()">
+      @for (item of navItems; track item.section) {
+        <button
+          type="button"
+          [class.active]="activeSection() === item.section"
+          (click)="selectSection(item.section)"
+        >
+          {{ item.label }}
+        </button>
+      }
+      <a class="nav-cta" [href]="whatsappUrl" target="_blank" rel="noopener" (click)="closeMenu()">Book Now</a>
+    </div>
+  </nav>
+</header>

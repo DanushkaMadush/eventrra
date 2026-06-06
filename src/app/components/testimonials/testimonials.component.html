@@ -1,0 +1,21 @@
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-heading centered reveal">
+      <p class="eyebrow">Testimonials</p>
+      <h2>Quiet confidence from clients who trusted the details.</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      @for (testimonial of testimonials; track testimonial.name) {
+        <article class="testimonial-card glass-card reveal">
+          <svg lucideQuote size="24"></svg>
+          <p>“{{ testimonial.quote }}”</p>
+          <footer>
+            <strong>{{ testimonial.name }}</strong>
+            <span>{{ testimonial.event }}</span>
+          </footer>
+        </article>
+      }
+    </div>
+  </div>
+</section>

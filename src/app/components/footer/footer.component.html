@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <button class="brand-mark brand-button" type="button" (click)="sectionSelected.emit('home')" aria-label="Eventrra by Peththa home">
+        <span class="brand-symbol">E</span>
+        <span>
+          <strong>{{ contact.businessName }}</strong>
+          <small>{{ contact.slogan }}</small>
+        </span>
+      </button>
+    </div>
+
+    <div class="footer-links">
+      <button type="button" (click)="sectionSelected.emit('services')">Services</button>
+      <button type="button" (click)="sectionSelected.emit('gallery')">Gallery</button>
+      <button type="button" (click)="sectionSelected.emit('contact')">Contact</button>
+    </div>
+
+    <p>© {{ year }} {{ contact.businessName }}. All rights reserved.</p>
+  </div>
+</footer>
